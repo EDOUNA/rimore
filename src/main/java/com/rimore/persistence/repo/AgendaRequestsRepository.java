@@ -4,10 +4,10 @@ import java.util.List;
 
 import com.rimore.persistence.models.AgendaRequestsModel;
 
-import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface AgendaRequestsRepository extends Repository<AgendaRequestsModel, Long> {
-    List<AgendaRequestsModel> findAll();
+public interface AgendaRequestsRepository extends CrudRepository<AgendaRequestsModel, Long> {
+    List<AgendaRequestsModel> findFirstById(Long id);
 
     List<AgendaRequestsModel> findByActive(Integer active);
 

@@ -9,33 +9,33 @@ public class AgendaRequestsModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    public long id;
 
-    @Column(nullable = false)
-    private Timestamp created_at;
+    @Column(name = "created_at")
+    public Timestamp createdAt;
 
     @PrePersist
     protected void onCreate() {
-        created_at = new Timestamp(System.currentTimeMillis());
+        createdAt = new Timestamp(System.currentTimeMillis());
     }
 
-    @Column(nullable = false)
-    private Timestamp updated_at;
+    @Column(name = "updated_at")
+    public Timestamp updatedAt;
 
     @PreUpdate
     protected void onUpdate() {
-        updated_at = new Timestamp(System.currentTimeMillis());
+        updatedAt = new Timestamp(System.currentTimeMillis());
     }
 
     @Column(nullable = false, name = "start_date")
-    private Timestamp startDate;
+    public Timestamp startDate;
 
     @Column(name = "end_date")
-    private Timestamp end_date;
+    public Timestamp endDate;
 
     @Column(nullable = false, name = "user_id")
-    private Integer userId;
+    public Integer userId;
 
-    @Column(nullable = false)
-    private Integer active;
+    @Column
+    public Integer active;
 }
