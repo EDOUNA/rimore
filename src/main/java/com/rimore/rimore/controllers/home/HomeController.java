@@ -1,4 +1,4 @@
-package com.rimore.rimore.home;
+package com.rimore.rimore.controllers.home;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
