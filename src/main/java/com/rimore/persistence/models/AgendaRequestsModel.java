@@ -27,11 +27,14 @@ public class AgendaRequestsModel {
         updated_at = new Timestamp(System.currentTimeMillis());
     }
 
-    @Column
-    private Timestamp start_date;
+    @Column(nullable = false, name = "start_date")
+    private Timestamp startDate;
 
-    @Column
+    @Column(name = "end_date")
     private Timestamp end_date;
+
+    @Column(nullable = false, name = "user_id")
+    private Integer userId;
 
     @Column(nullable = false)
     private Integer active;
