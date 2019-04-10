@@ -23,23 +23,24 @@ public class APIController {
 
     @Autowired
     private AgendaRequestsRepository agendaRequestsRepository;
-
-    @GetMapping
+    
     /**
      * Return all availanle agenda requests
      * @TODO: fix this later on; this should not end in a production situation
      * @return
      */
+    
+    @GetMapping
     public Iterable<AgendaRequestsModel> findAll() {
         return agendaRequestsRepository.findAll();
     }
 
-    @GetMapping("/byUserId/{id}")
     /**
      * Find all requests for a specific userId
      * @param id
      * @return
      */
+    @GetMapping("/byUserId/{id}")
     public ResponseEntity<List<AgendaRequestsModel>> findByUserId(@PathVariable Long id) {
         List<AgendaRequestsModel> agendaRequests = agendaRequestsRepository.findFirstById(id);
 
@@ -50,23 +51,23 @@ public class APIController {
         return new ResponseEntity<List<AgendaRequestsModel>>(agendaRequests, HttpStatus.OK);
     }
 
-    @PostMapping(path = "/createRequest", consumes = "application/json")
-    @ResponseStatus(HttpStatus.CREATED)
     /**
      * Create a new agenda request
      * @param agendaRequestsModel
      * @return
      */
+    @PostMapping(path = "/createRequest", consumes = "application/json")
+    @ResponseStatus(HttpStatus.CREATED)
     public AgendaRequestsModel createRequest(@RequestBody AgendaRequestsModel agendaRequestsModel) {
         return agendaRequestsRepository.save(agendaRequestsModel);
     }
 
-    @DeleteMapping("/deleteRequest/{id}")
     /**
      * Delete a request
      * @param id
      * @return
      */
+    @DeleteMapping("/deleteRequest/{id}")
     public ResponseEntity<HttpStatus> deleteRequest(@PathVariable Long id) {
         List<AgendaRequestsModel> agendaRequest = agendaRequestsRepository.findFirstById(id);
 
