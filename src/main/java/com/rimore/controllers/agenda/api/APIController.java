@@ -58,8 +58,14 @@ public class APIController {
      */
     @PostMapping(path = "/createRequest", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public AgendaRequestsModel createRequest(@RequestBody AgendaRequestsModel agendaRequestsModel) {
-        return agendaRequestsRepository.save(agendaRequestsModel);
+    public ResponseEntity<Object> createRequest(@RequestBody AgendaRequestsModel agendaRequestsModel) {
+        AgendaRequestsModel saveNewRequestsModel = agendaRequestsRepository.save(agendaRequestsModel);
+
+        if (null == saveNewRequestsModel) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Could not create entry");
+        }
+
+        return ResponseEntity.status(HttpStatus.CREATED).body("Entry successfully saved");
     }
 
     /**

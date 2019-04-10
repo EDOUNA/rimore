@@ -38,4 +38,11 @@ public class AgendaRequestsModel {
 
     @Column
     public Integer active;
+
+    // Getters and setters
+    public void AgendaRequestModel(Integer userId, Timestamp startDate, Timestamp endDate) {
+        this.userId = userId;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 }
