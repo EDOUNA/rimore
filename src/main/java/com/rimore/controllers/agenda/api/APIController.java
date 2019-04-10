@@ -2,6 +2,8 @@ package com.rimore.controllers.agenda.api;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.rimore.persistence.models.AgendaRequestsModel;
 import com.rimore.persistence.repo.AgendaRequestsRepository;
 
@@ -58,7 +60,7 @@ public class APIController {
      */
     @PostMapping(path = "/createRequest", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Object> createRequest(@RequestBody AgendaRequestsModel agendaRequestsModel) {
+    public ResponseEntity<Object> createRequest(@Valid @RequestBody AgendaRequestsModel agendaRequestsModel) {
         AgendaRequestsModel saveNewRequestsModel = agendaRequestsRepository.save(agendaRequestsModel);
 
         if (null == saveNewRequestsModel) {
