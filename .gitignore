@@ -23,4 +23,5 @@
 hs_err_pid*
 
 # Development files
-.vscode
+.vscode/
+.mvn/
