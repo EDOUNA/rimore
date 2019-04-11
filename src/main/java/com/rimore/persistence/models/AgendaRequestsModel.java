@@ -80,6 +80,10 @@ public class AgendaRequestsModel {
         this.updatedAt = updatedAt;
     }
 
+    public Timestamp getStartDate() {
+        return this.startDate;
+    }
+
     public void setStartDate(Timestamp startDate) {
         this.startDate = startDate;
     }
