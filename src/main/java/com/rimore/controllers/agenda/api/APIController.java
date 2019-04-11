@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -75,7 +76,7 @@ public class APIController {
     }
 
     /**
-     * Delete a request
+     * Delete request
      * 
      * @param id
      * @return
@@ -92,4 +93,20 @@ public class APIController {
         return new ResponseEntity<HttpStatus>(HttpStatus.OK);
     }
 
+    /**
+     * Update request
+     * 
+     * @param id
+     * @return
+     */
+    @PutMapping("/updateRequest/{id}")
+    public ResponseEntity<String> updateRequest(@PathVariable Long id) {
+        List<AgendaRequestsModel> agendaRequest = agendaRequestsRepository.findFirstById(id);
+
+        if (agendaRequest.isEmpty()) {
+            return new ResponseEntity<String>("Could not find agenda request ID " + id, HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<String>("Record successfully updated", HttpStatus.OK);
+    }
 }
