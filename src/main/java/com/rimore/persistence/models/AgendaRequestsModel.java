@@ -19,6 +19,7 @@ public class AgendaRequestsModel {
     @PrePersist
     protected void onCreate() {
         createdAt = new Timestamp(System.currentTimeMillis());
+        active = 1; // Setting the active state on 1 by default
     }
 
     @Column(name = "updated_at")
@@ -43,20 +44,6 @@ public class AgendaRequestsModel {
 
     @Column
     public Integer active;
-
-    // Getters and setters
-    public void AgendaRequestModel(Integer userId, Timestamp startDate, Timestamp endDate) {
-        this.userId = userId;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-
-    public Timestamp getStartDate() {
-        return startDate;
-    }
-
-    public AgendaRequestsModel() {
-    }
 
     public AgendaRequestsModel(long id, Timestamp createdAt, Timestamp updatedAt, Timestamp startDate,
             Timestamp endDate, Integer userId, Integer active) {

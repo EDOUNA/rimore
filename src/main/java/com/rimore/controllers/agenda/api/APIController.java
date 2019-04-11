@@ -23,15 +23,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/agendaRequests")
 public class APIController {
 
+    /**
+     *
+     */
+
+    private static final String ENTRY_SUCCESSFULLY_SAVED = "Entry successfully saved";
     @Autowired
     private AgendaRequestsRepository agendaRequestsRepository;
-    
+
     /**
      * Return all availanle agenda requests
+     * 
      * @TODO: fix this later on; this should not end in a production situation
      * @return
      */
-    
+
     @GetMapping
     public Iterable<AgendaRequestsModel> findAll() {
         return agendaRequestsRepository.findAll();
@@ -39,6 +45,7 @@ public class APIController {
 
     /**
      * Find all requests for a specific userId
+     * 
      * @param id
      * @return
      */
@@ -55,23 +62,24 @@ public class APIController {
 
     /**
      * Create a new agenda request
+     * 
      * @param agendaRequestsModel
      * @return
      */
     @PostMapping(path = "/createRequest", consumes = "application/json")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Object> createRequest(@Valid @RequestBody AgendaRequestsModel agendaRequestsModel) {
+    public ResponseEntity<String> createRequest(@Valid @RequestBody AgendaRequestsModel agendaRequestsModel) {
         AgendaRequestsModel saveNewRequestsModel = agendaRequestsRepository.save(agendaRequestsModel);
 
         if (null == saveNewRequestsModel) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Could not create entry");
+            return new ResponseEntity<String>("Could not create entry", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        return ResponseEntity.status(HttpStatus.CREATED).body("Entry successfully saved");
+        return new ResponseEntity<String>("Entry successfully created", HttpStatus.CREATED);
     }
 
     /**
      * Delete a request
+     * 
      * @param id
      * @return
      */
