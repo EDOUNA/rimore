@@ -9,6 +9,13 @@ import javax.validation.constraints.NotNull;
 @Table(name = "agenda_requests")
 public class AgendaRequestsModel {
 
+    /**
+     * Default contrusctor
+     */
+    public AgendaRequestsModel() {
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long id;
