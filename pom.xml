@@ -10,8 +10,9 @@
 	<groupId>com.rimore</groupId>
 	<artifactId>rimore</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
-	<description>Demo project for Spring Boot</description>
+	<name>Rimore</name>
+	<packaging>jar</packaging>
+	<description>Rimore agenda application</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
