@@ -27,4 +27,4 @@ hs_err_pid*
 .mvn/
 .settings/
 target/
-/src/main/application.properties
+src/main/resources/application.properties

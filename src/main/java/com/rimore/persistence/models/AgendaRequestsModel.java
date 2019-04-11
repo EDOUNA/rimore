@@ -16,6 +16,18 @@ public class AgendaRequestsModel {
 
     }
 
+    @PrePersist
+    protected void onCreate() {
+        createdAt = new Timestamp(System.currentTimeMillis());
+        updatedAt = createdAt;
+        active = 1; // Setting the active state on 1 by default
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long id;
@@ -23,19 +35,8 @@ public class AgendaRequestsModel {
     @Column(name = "created_at")
     public Timestamp createdAt;
 
-    @PrePersist
-    protected void onCreate() {
-        createdAt = new Timestamp(System.currentTimeMillis());
-        active = 1; // Setting the active state on 1 by default
-    }
-
     @Column(name = "updated_at")
     public Timestamp updatedAt;
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = new Timestamp(System.currentTimeMillis());
-    }
 
     @Column(nullable = false, name = "start_date")
     @NotNull(message = "Start date is required")
