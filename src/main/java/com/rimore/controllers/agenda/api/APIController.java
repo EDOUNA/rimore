@@ -48,11 +48,11 @@ public class APIController {
      * @return
      */
     @GetMapping("/byUserId/{id}")
-    public ResponseEntity<List<AgendaRequestsModel>> findByUserId(@PathVariable Integer id) {
+    public ResponseEntity<?> findByUserId(@PathVariable Integer id) {
         List<AgendaRequestsModel> agendaRequests = agendaRequestsRepository.findByUserId(id);
 
         if (agendaRequests.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<String>("No user found with ID " + id, HttpStatus.NOT_FOUND);
         }
 
         return new ResponseEntity<List<AgendaRequestsModel>>(agendaRequests, HttpStatus.OK);

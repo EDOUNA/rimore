@@ -29,4 +29,3 @@ hs_err_pid*
 target
 src/main/resources/application.properties
 node_modules
-src/main/resources/application.properties
